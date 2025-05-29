@@ -1,14 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '@/components/layout/MainAppLayout';
+import PageHeader from '@/components/Dashboard/PageHeader';
+import FunnelStatsCardGrid from '@/components/Dashboard/FunnelStatsCardGrid';
+import LeadsTrackingGraph from '@/components/Dashboard/LeadsTrackingGraph';
+import ReasonStatsGrid from '@/components/Dashboard/ReasonStatsGrid';
 
-const Index = () => {
+/**
+ * DashboardPage serves as the main overview for lead management.
+ * It utilizes MainAppLayout for the overall page structure (sidebar, top header)
+ * and composes various dashboard-specific organism components to display key metrics and data.
+ */
+const DashboardPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MainAppLayout>
+      {/* 
+        The MainAppLayout already provides padding (p-6) for its children.
+        This inner div arranges the dashboard components vertically with consistent spacing,
+        as per the mainContent.container layout requirement ("flex flex-col gap-6").
+      */}
+      <div className="flex flex-col gap-6">
+        <PageHeader />
+        <FunnelStatsCardGrid />
+        <LeadsTrackingGraph />
+        <ReasonStatsGrid />
       </div>
-    </div>
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default DashboardPage;
